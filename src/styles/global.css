@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: #FFF;
+    background: #ebf2f5;
+}
+
+body,input,button,textarea{
+    outline: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+}
