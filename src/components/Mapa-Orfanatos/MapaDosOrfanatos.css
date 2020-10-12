@@ -1,0 +1,60 @@
+#page-map{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    background-color: #FFF;
+}
+
+.barra-lateral{
+    width: 440px;
+    padding: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: linear-gradient(329.54deg, #29B6D1 0%, #00C7C7 100%);
+}
+
+.barra-latera__titulo{
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 42px;
+    margin-top: 64px;
+}
+
+.barra-latera__desc{
+    margin-top: 24px;
+    line-height: 28px;
+}
+.barra-lateral__footer{
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+}
+.barra-lateral__footer stronf{
+    font-weight: 800;
+}
+.create-orphanage{
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    width: 64px;
+    height: 64px;
+    border-radius: 28px;
+    background: #15c3d6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    transition: background-color 0.2s;
+}
+
+.create-orphanage:hover{
+    background: #17b6eb;
+}
+
+.leaflet-container{
+    z-index: 1;
+}
