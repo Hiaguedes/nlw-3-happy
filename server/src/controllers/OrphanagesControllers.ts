@@ -29,8 +29,8 @@ export default {
     async create(req: Request, res: Response) {
         const requestImageFiles = req.files as Express.Multer.File[];
         const imagePaths = requestImageFiles.map(img => ( { path: img.filename } ))
-
-        const data: Orphanage = { ...req.body, images: imagePaths }
+        const {name,latitude,longitude,about,instructions,opening_hours,open_on_weekends,images} = req.body;
+        const data =  {name,latitude,longitude,about,instructions,opening_hours,open_on_weekends: open_on_weekends === 'true',images: imagePaths}
 
         const schema = Yup.object().shape({
             name: Yup.string().required(),
