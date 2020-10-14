@@ -1,23 +1,18 @@
-import express from 'express';
-import './database/connection';
-import routes from './models/routes'
+import express from 'express'
+import './database/connection'
+import 'express-async-errors'
+import routes from "./routes";
+import path from 'path'
+import errorHandler from './errors/handler'
+import cors from 'cors'
 
-const app = express();
-app.use(express.json());
+const app = express()
+
+app.use(cors())
+app.use(express.json())
 app.use(routes)
-
-// request -> requisição do front end
-//response -> resposta do back end
-
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')))
+app.use(errorHandler)
 
 
-// método json para envio de objetos para ser consumida pois estamos criando API
-
-app.listen(3333);
-
-
-
-// GET buscar informação
-// POST criando informação
-// PUT editar informação
-// DELETE deletar informação
+app.listen(3333)

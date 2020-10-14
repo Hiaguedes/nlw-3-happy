@@ -1,29 +1,22 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class createOrphanages1602602865835 implements MigrationInterface {
+export class createOrphanages1602659262738 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        // fazer alterações
-        //criar tabela, ou criar novo campo ou deletar
         await queryRunner.createTable(new Table({
             name: 'orphanages',
             columns: [
-                {
+                { 
                     name: 'id',
                     type: 'integer',
                     unsigned: true,
                     isPrimary: true,
                     isGenerated: true,
-                    generationStrategy: 'increment'
-                },{
-                    name: 'name',
-                    type: 'varchar'
+                    generationStrategy: "increment"
                 },
                 {
-                    name: 'latitude',
-                    type: 'decimal',
-                    scale: 10,
-                    precision: 2
+                    name: 'name',
+                    type: 'varchar'
                 },
                 {
                     name: 'longitude',
@@ -32,7 +25,13 @@ export class createOrphanages1602602865835 implements MigrationInterface {
                     precision: 2
                 },
                 {
-                    name: 'about',
+                    name: 'latitude',
+                    type: 'decimal',
+                    scale: 10,
+                    precision: 2
+                },
+                {
+                    name: "about",
                     type: 'text'
                 },
                 {
@@ -40,21 +39,19 @@ export class createOrphanages1602602865835 implements MigrationInterface {
                     type: 'text'
                 },
                 {
-                    name: 'opening_hours',
-                    type: 'varchar'
-                },
-                {
                     name: 'open_on_weekends',
                     type: 'boolean',
                     default: false
+                },
+                {
+                    name: 'opening_hours',
+                    type: 'varchar'
                 }
-            ],
-        }));
+            ]
+        }))
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        //alterar o que feito no up
-
         await queryRunner.dropTable('orphanages')
     }
 
