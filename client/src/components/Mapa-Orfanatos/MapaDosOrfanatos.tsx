@@ -31,7 +31,7 @@ function MapaDosOrfanatos(){
                   position={[-22.5110557,-43.1839826]}
         >
             <Popup closeButton={false} minWidth={240} maxWidth={240} className="map-popup">
-            Lar das Meninas Super Poderosas
+            Lar das Meninas
             <Link to="/orphanages/1">
                 <FiArrowRight size={32} color="#FFF"/>            
             </Link>
