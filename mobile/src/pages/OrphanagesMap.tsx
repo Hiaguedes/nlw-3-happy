@@ -1,11 +1,11 @@
 import React,{useEffect, useState} from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker,Callout } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker,Callout} from 'react-native-maps';
 import mapMarker from '../img/map-marker.png';
 import {Feather} from '@expo/vector-icons';
 import {useFonts} from 'expo-font';
 import {Nunito_600SemiBold,Nunito_700Bold,Nunito_800ExtraBold} from '@expo-google-fonts/nunito';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
 import api from '../../services/api';
 
@@ -18,8 +18,10 @@ export default function OrphanagesMap(){
     latitude: number;
   }
 
-   const [orphanages, setOrphanages]= useState<Orphanage[]>([]) 
-  useEffect( ()=> {
+   const [orphanages, setOrphanages]= useState<Orphanage[]>([]);
+
+
+  useFocusEffect( ()=> {
     api.get('/orphanages').then(res => setOrphanages(res.data))
   },[])
   
@@ -33,15 +35,18 @@ export default function OrphanagesMap(){
 
 
       function handleNavigationToCreateOrphanage(){
-        navigation.navigate('OrphanageData')
+        navigation.navigate('SelectMapPosition')
       }
 
       function handleNavigateToOrphanageDetail(id:number){
         navigation.navigate('OrphanageDetails', {id})
       }
 
+
+
     return (
         <View style={styles.container}>
+          
 
         <MapView style={styles.map}
         provider={PROVIDER_GOOGLE}

@@ -31,6 +31,7 @@ export default function OrphanageDetails() {
     }[]
   }
 
+
   const params = route.params as OrphanageParams;
   const [orphanage,setOrphanage] = useState<Orphanage>();
 
@@ -69,24 +70,25 @@ export default function OrphanageDetails() {
   <Text style={styles.description}>{orphanage.about}</Text>
       
         <View style={styles.mapContainer}>
-          <MapView 
+        <MapView
+       
             initialRegion={{
               latitude: orphanage.latitude,
               longitude: orphanage.longitude,
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
-            }} 
+            }}
             zoomEnabled={false}
             pitchEnabled={false}
             scrollEnabled={false}
             rotateEnabled={false}
             style={styles.mapStyle}
           >
-            <Marker 
+            <Marker
               icon={mapMarkerImg}
-              coordinate={{ 
+              coordinate={{
                 latitude: orphanage.latitude,
-                longitude: orphanage.longitude
+                longitude: orphanage.longitude,
               }}
             />
           </MapView>
