@@ -5,6 +5,8 @@ import mapMarker from '../img/map-marker.png';
 import {Feather} from '@expo/vector-icons';
 import {useFonts} from 'expo-font';
 import {Nunito_600SemiBold,Nunito_700Bold,Nunito_800ExtraBold} from '@expo-google-fonts/nunito';
+import {useNavigation} from '@react-navigation/native';
+import { RectButton } from 'react-native-gesture-handler';
 
 export default function OrphanagesMap(){
     const [fontsLoaded] = useFonts({
@@ -12,8 +14,18 @@ export default function OrphanagesMap(){
         Nunito_700Bold,
         Nunito_800ExtraBold
       });
-    
+      const navigation =useNavigation();
       if(!fontsLoaded) return null;
+
+
+      function handleNavigationToCreateOrphanage(){
+        navigation.navigate('OrphanageData')
+      }
+
+      function handleNavigateToOrphanageDetail(){
+        navigation.navigate('OrphanageDetails')
+      }
+
     return (
         <View style={styles.container}>
 
@@ -37,7 +49,7 @@ export default function OrphanagesMap(){
                 longitude:-43.1810531
               }}
             >
-              <Callout tooltip={true} onPress={() => {}}>
+              <Callout tooltip={true} onPress={handleNavigateToOrphanageDetail}>
                 <View style={styles.calloutContainer}>
                 <Text style={styles.calloutText}>Lar das Meninas</Text>
                 </View>
@@ -48,9 +60,9 @@ export default function OrphanagesMap(){
   
           <View style={styles.footer}>
             <Text style={styles.footerText}>n Orfanatos encontrados</Text>
-            <TouchableOpacity style={styles.createOrphanageButton} onPress={()=> alert('eae')}> 
+            <RectButton style={styles.createOrphanageButton} onPress={handleNavigationToCreateOrphanage}> 
                 <Feather name="plus" size={20} color="#FFF"/>
-            </TouchableOpacity>
+            </RectButton>
           </View>
       </View>
     )
